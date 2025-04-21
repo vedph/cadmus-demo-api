@@ -3177,25 +3177,8 @@
       ]
     },
     {
-      "id": "metadata-names@en",
-      "entries": [
-        {
-          "id": "id",
-          "value": "ID"
-        },
-        {
-          "id": "author",
-          "value": "author"
-        }
-      ]
-    },
-    {
       "id": "metadata-types@en",
       "entries": [
-        {
-          "id": "bool",
-          "value": "boolean"
-        },
         {
           "id": "string",
           "value": "string"
@@ -3203,6 +3186,14 @@
         {
           "id": "int",
           "value": "number"
+        },
+        {
+          "id": "bool",
+          "value": "boolean"
+        },
+        {
+          "id": "date",
+          "value": "date"
         }
       ]
     },
