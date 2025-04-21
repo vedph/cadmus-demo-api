@@ -1,0 +1,53 @@
+services:
+  # MongoDB
+  cadmus-demo-mongo:
+    image: mongo
+    container_name: cadmus-demo-mongo
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    command: mongod --logpath=/dev/null
+    ports:
+      - 27017:27017
+    networks:
+      - cadmus-demo-network
+
+  # PostgreSQL
+  cadmus-demo-pgsql:
+    image: postgres
+    container_name: cadmus-demo-pgsql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
+    networks:
+      - cadmus-demo-network
+
+  # Cadmus demo API
+  cadmus-demo-api:
+    image: vedph2020/cadmus-demo-api:0.0.1
+    container_name: cadmus-demo-api
+    ports:
+      - 5184:8080
+    depends_on:
+      - cadmus-demo-mongo
+      - cadmus-demo-pgsql
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - CONNECTIONSTRINGS__DEFAULT=mongodb://cadmus-demo-mongo:27017/{0}
+      - CONNECTIONSTRINGS__AUTH=Server=cadmus-demo-pgsql;port=5432;Database={0};User Id=postgres;Password=postgres;Include Error Detail=True
+      - CONNECTIONSTRINGS__INDEX=Server=cadmus-demo-pgsql;port=5432;Database={0};User Id=postgres;Password=postgres;Include Error Detail=True
+      - SERILOG__CONNECTIONSTRING=mongodb://cadmus-demo-mongo:27017/{0}-log
+      - STOCKUSERS__0__PASSWORD=P4ss-W0rd!
+      - SEED__DELAY=20
+      - MESSAGING__APIROOTURL=http://cadmusapi.azurewebsites.net
+      - MESSAGING__APPROOTURL=http://cadmusapi.com/
+      - MESSAGING__SUPPORTEMAIL=support@cadmus.com
+    networks:
+      - cadmus-demo-network
+
+networks:
+  cadmus-demo-network:
+    driver: bridge
