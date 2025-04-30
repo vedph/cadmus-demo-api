@@ -33,11 +33,11 @@
         },
         {
           "typeId": "it.vedph.district-location",
-          "name": "localizzazione",
-          "description": "Localizzazione.",
+          "name": "Location",
+          "description": "Location.",
           "isRequired": true,
           "colorKey": "F7A072",
-          "groupKey": "sintesi",
+          "groupKey": "general",
           "sortKey": "04"
         },
         {
@@ -71,7 +71,6 @@
           "typeId": "it.vedph.historical-events",
           "name": "events",
           "description": "Historical events.",
-          "isRequired": false,
           "colorKey": "C898C8",
           "groupKey": "general",
           "sortKey": "08"
@@ -292,7 +291,7 @@
           "name": "date",
           "description": "Historical date.",
           "colorKey": "F898F8",
-          "groupKey": "placement",
+          "groupKey": "general",
           "sortKey": "06"
         },
         {

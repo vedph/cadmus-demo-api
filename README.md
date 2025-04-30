@@ -9,3 +9,7 @@
 This is a Cadmus API layer customized for the demo project. Most of its code is derived from [shared Cadmus libraries](https://github.com/vedph/cadmus-api).
 
 The demo project just includes some shared models to let you play with a more realistic Cadmus project. Still, its taxonomies are fake and incomplete, and the models used are just examples.
+
+## History
+
+- 2025-04-30: updated packages and thesauri.
