@@ -3104,6 +3104,39 @@
       ]
     },
     {
+      "id": "epi-ligature-types@en",
+      "entries": [
+        {
+          "id": "joint",
+          "value": "joint"
+        },
+        {
+          "id": "inversion",
+          "value": "inversion"
+        },
+        {
+          "id": "overlap",
+          "value": "overlap"
+        },
+        {
+          "id": "replacement",
+          "value": "replacement"
+        },
+        {
+          "id": "graft",
+          "value": "graft"
+        },
+        {
+          "id": "inclusion",
+          "value": "inclusion"
+        },
+        {
+          "id": "connection",
+          "value": "connection"
+        }
+      ]
+    },
+    {
       "id": "epi-script-casings@en",
       "entries": [
         {
