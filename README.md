@@ -12,4 +12,7 @@ The demo project just includes some shared models to let you play with a more re
 
 ## History
 
+- 2025-05-02:
+  - updated packages (migration V3).
+  - updated preview profile.
 - 2025-04-30: updated packages and thesauri.
