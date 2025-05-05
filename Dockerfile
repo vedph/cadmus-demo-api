@@ -1,27 +1,27 @@
-# Stage 1 base
-FROM --platform=$BUILDPLATFORM mcr.microsoft.comdotnetaspnet9.0 AS base
-WORKDIR app
+# Stage 1: base
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+WORKDIR /app
 EXPOSE 8080
 EXPOSE 443
 
-# Stage 2 build
-FROM --platform=$BUILDPLATFORM mcr.microsoft.comdotnetsdk9.0 AS build
-WORKDIR src
-COPY [CadmusDemoApiCadmusDemoApi.csproj, CadmusDemoApi]
+# Stage 2: build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+COPY ["CadmusDemoApi/CadmusDemoApi.csproj", "CadmusDemoApi/"]
 # copy local packages to avoid using a NuGet custom feed, then restore
-# COPY .local-packages srclocal-packages
-RUN dotnet restore CadmusDemoApiCadmusDemoApi.csproj -s httpsapi.nuget.orgv3index.json --verbosity n
+COPY ./local-packages /src/local-packages
+RUN dotnet restore "CadmusDemoApi/CadmusDemoApi.csproj" -s /src/local-packages -s https://api.nuget.org/v3/index.json --verbosity n
 # copy the content of the API project
 COPY . .
 # build it
-RUN dotnet build CadmusDemoApiCadmusDemoApi.csproj -c Release -o appbuild
+RUN dotnet build "CadmusDemoApi/CadmusDemoApi.csproj" -c Release -o /app/build
 
-# Stage 3 publish
+# Stage 3: publish
 FROM build AS publish
-RUN dotnet publish CadmusDemoApiCadmusDemoApi.csproj -c Release -o apppublish
+RUN dotnet publish "CadmusDemoApi/CadmusDemoApi.csproj" -c Release -o /app/publish
 
-# Stage 4 final
+# Stage 4: final
 FROM base AS final
-WORKDIR app
-COPY --from=publish apppublish .
-ENTRYPOINT [dotnet, CadmusDemoApi.dll]
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "CadmusDemoApi.dll"]
