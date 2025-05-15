@@ -12,6 +12,7 @@ The demo project just includes some shared models to let you play with a more re
 
 ## History
 
+- 2025-05-15: updated packages.
 - 2025-05-02:
   - updated packages (migration V3).
   - updated preview profile.
