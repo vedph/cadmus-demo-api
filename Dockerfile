@@ -8,8 +8,6 @@ EXPOSE 443
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY ["CadmusDemoApi/CadmusDemoApi.csproj", "CadmusDemoApi/"]
-# copy local packages to avoid using a NuGet custom feed, then restore
-COPY ./local-packages /src/local-packages
 RUN dotnet restore "CadmusDemoApi/CadmusDemoApi.csproj" -s /src/local-packages -s https://api.nuget.org/v3/index.json --verbosity n
 # copy the content of the API project
 COPY . .
