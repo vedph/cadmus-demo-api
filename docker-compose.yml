@@ -27,7 +27,7 @@ services:
 
   # Cadmus demo API
   cadmus-demo-api:
-    image: vedph2020/cadmus-demo-api:0.0.1
+    image: vedph2020/cadmus-demo-api:0.0.2
     container_name: cadmus-demo-api
     ports:
       - 5184:8080
