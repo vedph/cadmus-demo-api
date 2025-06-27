@@ -12,6 +12,10 @@ The demo project just includes some shared models to let you play with a more re
 
 ## History
 
+- 2025-06-27:
+  - updated packages.
+  - added export controllers library. 
+
 ### 0.0.2
 
 - 2025-05-21: updated packages.
