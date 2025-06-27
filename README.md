@@ -2,7 +2,9 @@
 
 🐋 Quick Docker image build:
 
-  docker buildx build . --platform linux/amd64,linux/arm64,windows/amd64 -t vedph2020/cadmus-demo-api:0.0.2 -t vedph2020/cadmus-demo-api:latest --push
+```sh
+docker buildx build . --platform linux/amd64,linux/arm64,windows/amd64 -t vedph2020/cadmus-demo-api:0.0.3 -t vedph2020/cadmus-demo-api:latest --push
+```
 
 (replace with the current version).
 
